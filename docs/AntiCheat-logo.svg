@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title">
+  <title id="title">AntiCheat</title>
+  <rect width="1200" height="300" rx="32" fill="#17191f"/>
+  <path d="M92 150a58 58 0 0 1 116 0v48H92z" fill="none" stroke="#f59e0b" stroke-width="16"/>
+  <path d="M116 154h68m-34-34v68" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
+  <text x="260" y="188" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="700" letter-spacing="2">AntiCheat</text>
+</svg>

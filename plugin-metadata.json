@@ -1,0 +1,11 @@
+{
+    "name": "AntiCheat",
+    "alias": "AntiCheat",
+    "display_name": "AntiCheat",
+    "description": "Open-source Counter-Strike 2 server-side anti-cheat maintained by GSM-RO.",
+    "author": "GSM-RO",
+    "url": "https://steamcommunity.com/profiles/76561198353131845/",
+    "log_tag": "AntiCheat",
+    "license": "AGPL-3.0",
+    "version": "1.0.0"
+}
