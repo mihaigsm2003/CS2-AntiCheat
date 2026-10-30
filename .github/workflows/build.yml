@@ -16,7 +16,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          submodules: recursive
+          submodules: false
       - name: Set up Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
@@ -32,11 +32,26 @@ jobs:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          submodules: false
+      - name: Check out CS2 SDK
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: alliedmodders/hl2sdk
+          ref: 394a726dcf4e805489c32cf90da50bb6e1b8a253
+          path: hl2sdk-cs2
+      - name: Check out MetaMod:Source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: alliedmodders/metamod-source
+          ref: 170058a2f0dbd58106b7c76bfe88a94672295356
+          path: metamod-source
           submodules: recursive
       - name: Set up Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
+      - name: Prepare Linux build scripts
+        run: chmod +x build-linux.sh bootstrap.sh
       - name: Compile Linux plugin
         run: ./build-linux.sh AntiCheat/build-linux-ci
       - name: Package Linux server files
@@ -59,6 +74,19 @@ jobs:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          submodules: false
+      - name: Check out CS2 SDK
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: alliedmodders/hl2sdk
+          ref: 394a726dcf4e805489c32cf90da50bb6e1b8a253
+          path: hl2sdk-cs2
+      - name: Check out MetaMod:Source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: alliedmodders/metamod-source
+          ref: 170058a2f0dbd58106b7c76bfe88a94672295356
+          path: metamod-source
           submodules: recursive
       - name: Set up Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
