@@ -25,6 +25,8 @@
 *.la
 *.a
 *.lib
+!vendor/funchook/lib/*.a
+!vendor/funchook/lib/*.lib
 
 # Executables
 *.exe
