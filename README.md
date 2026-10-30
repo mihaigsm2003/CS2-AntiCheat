@@ -4,14 +4,6 @@
 
 ![AntiCheat logo](docs/AntiCheat-logo.svg)
 
-### Open-source server-side anti-cheat for Counter-Strike 2.
-
-[![Modules](https://img.shields.io/badge/modules-18-6f42c1?style=for-the-badge)](#detection-modules)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-5c7cfa?style=for-the-badge)](#quickstart)
-[![License](https://img.shields.io/badge/license-see%20license%20files-2ea44f?style=for-the-badge)](#licensing)
-
-**A good Counter-Strike match should be decided by the players, not by who brought the better cheat.**
-
 AntiCheat watches the aim, shots, movement, button presses, and game settings that players send to the server. When it finds enough strong evidence, it reports the player and can ask the server to punish them.
 
 </div>
