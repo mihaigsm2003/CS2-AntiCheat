@@ -55,6 +55,7 @@ This release fixes Windows and Linux builds against the CS2 SDK by linking the S
 
 Windows x64 was built with MSVC 19.51, and Linux x64 was built with Clang in the pinned Steam Runtime 3 SDK image, using CS2 SDK commit `a508eb5ed5fb36f4067fa36a1c33f5fec7d73066` and MetaMod:Source commit `ea513d8960c52d266a1c5620dc762def0dd8bce8`. The plugin remains a native MetaMod:Source plugin and does not require CounterStrikeSharp; it is intended to run alongside CounterStrikeSharp 1.0.380. Runtime loading and gamedata signatures/offsets still require verification against the target CS2 server binaries.
 
+
 ## Quickstart
 
 You need a Windows x64 or Linux x64 CS2 dedicated server running [Metamod:Source](https://www.sourcemm.net/) 2.x.
