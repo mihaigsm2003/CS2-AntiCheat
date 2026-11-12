@@ -1,6 +1,6 @@
 # Third-party notices
 
-AntiCheat 1.0.0 is maintained by GSM-RO. This maintainer attribution does not replace original copyright notices or the licenses of inherited and third-party components.
+AntiCheat 1.0.1 is maintained by GSM-RO. This maintainer attribution does not replace original copyright notices or the licenses of inherited and third-party components.
 
 AntiCheat uses the following third-party software. Each project remains under its own license and copyright.
 

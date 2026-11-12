@@ -1,6 +1,7 @@
 #pragma once
 
 #include "detection/detection_system.h"
+#include "engine2/gameshareddefs.h"
 #include "clientcvar/client_cvar_value.h"
 #include "common.h"
 #include "localization.h"

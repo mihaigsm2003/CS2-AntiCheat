@@ -8,6 +8,7 @@
 #endif
 #include "ehandle.h"
 #include "gametrace.h"
+#include "soundflags.h"
 
 class CCSPlayerPawn;
 class CCSPlayerController;

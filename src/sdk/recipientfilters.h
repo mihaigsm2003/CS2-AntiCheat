@@ -2,11 +2,10 @@
 #include "irecipientfilter.h"
 #include "utils/utils.h"
 #include "interfaces/interfaces.h"
-#include "inetchannel.h"
+#include "networksystem/inetchannel.h"
 #include "sdk/entity/cbaseentity.h"
 #include "sdk/serversideclient.h"
 #include "interfaces/interfaces.h"
-#include "iserver.h"
 
 class CRecipientFilter : public IRecipientFilter
 {

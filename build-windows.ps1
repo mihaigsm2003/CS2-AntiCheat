@@ -3,12 +3,19 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+$requiredMetaModCommit = 'ea513d8960c52d266a1c5620dc762def0dd8bce8'
 
 if ($BuildDirectory -notmatch '^[A-Za-z0-9_.-]+$') {
 	throw 'The build folder name may only contain letters, numbers, dots, underscores, and dashes.'
 }
 
 & (Join-Path $PSScriptRoot 'bootstrap.ps1')
+
+$metaModSourcePath = Join-Path $PSScriptRoot 'metamod-source'
+$metaModRevision = (& git.exe -C $metaModSourcePath rev-parse HEAD).Trim()
+if ($LASTEXITCODE -ne 0 -or $metaModRevision -ne $requiredMetaModCommit) {
+	throw "MetaMod:Source must be checked out at $requiredMetaModCommit (found $metaModRevision)."
+}
 
 $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
 if (-not (Test-Path $vswhere)) {

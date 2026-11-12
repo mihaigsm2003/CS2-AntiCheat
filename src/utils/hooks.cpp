@@ -9,7 +9,6 @@
 #include "utils/utils.h"
 
 #include "igameevents.h"
-#include "iserver.h"
 #include "cs_gameevents.pb.h"
 
 namespace
@@ -27,7 +26,7 @@ namespace
 	KHook::Return<bool> HookFireEventBefore(IGameEventManager2 *, IGameEvent *, bool);
 	KHook::Return<bool> HookFireEventAfter(IGameEventManager2 *, IGameEvent *, bool);
 	KHook::Return<void> HookPostEvent(
-		IGameEventSystem *, CSplitScreenSlot, bool, int, const uint64 *, INetworkMessageInternal *, const CNetMessage *, unsigned long,
+		IGameEventSystem *, CSplitScreenSlot, bool, int, const uint64 *, NetMessageInfo_t *, const CNetMessage *, unsigned long,
 		NetChannelBufType_t);
 
 	KHook::Virtual<CCSPlayerPawn, void, const Vector *, const QAngle *, const Vector *> teleportHook(HookTeleport, nullptr);
@@ -43,9 +42,12 @@ namespace
 		clientDisconnectHook(&ISource2GameClients::ClientDisconnect, HookClientDisconnect, nullptr);
 	KHook::Virtual<IGameEventManager2, bool, IGameEvent *, bool> fireEventHook(
 		&IGameEventManager2::FireEvent, HookFireEventBefore, HookFireEventAfter);
-	KHook::Virtual<IGameEventSystem, void, CSplitScreenSlot, bool, int, const uint64 *, INetworkMessageInternal *, const CNetMessage *,
+	KHook::Virtual<IGameEventSystem, void, CSplitScreenSlot, bool, int, const uint64 *, NetMessageInfo_t *, const CNetMessage *,
 				   unsigned long, NetChannelBufType_t>
-		postEventHook(&IGameEventSystem::PostEventAbstract, HookPostEvent, nullptr);
+		postEventHook(
+			static_cast<void (IGameEventSystem::*)(CSplitScreenSlot, bool, int, const uint64 *, NetMessageInfo_t *, const CNetMessage *,
+													unsigned long, NetChannelBufType_t)>(&IGameEventSystem::PostEventAbstract),
+			HookPostEvent, nullptr);
 
 	struct PendingGameEvent
 	{
@@ -99,23 +101,18 @@ namespace
 	}
 
 	KHook::Return<void> HookPostEvent(
-		IGameEventSystem *, CSplitScreenSlot, bool, int, const uint64 *, INetworkMessageInternal *event, const CNetMessage *data,
+		IGameEventSystem *, CSplitScreenSlot, bool, int, const uint64 *, NetMessageInfo_t *event, const CNetMessage *data,
 		unsigned long, NetChannelBufType_t)
 	{
 		if (!g_AntiCheat.IsLoaded() || !event || !data)
 		{
 			return {KHook::Action::Ignore};
 		}
-		auto *info = event->GetNetMessageInfo();
-		if (!info)
-		{
-			return {KHook::Action::Ignore};
-		}
-		if (info->m_MessageId == GE_FireBulletsId)
+		if (event->m_MessageId == GE_FireBulletsId)
 		{
 			g_AntiCheat.OnFireBullets(*data->ToPB<CMsgTEFireBullets>());
 		}
-		else if (info->m_MessageId == GE_PlayerBulletHitId)
+		else if (event->m_MessageId == GE_PlayerBulletHitId)
 		{
 			g_AntiCheat.OnPlayerBulletHit(*data->ToPB<CMsgPlayerBulletHit>());
 		}

@@ -1,9 +1,12 @@
 #pragma once
 
 #include "common.h"
+#include "engine2/igameresourceservice.h"
+#include "engine2/isource2server.h"
+#include "engine2/ivengineserver2.h"
 #include "igameeventsystem.h"
+#include <interfaces/interfaces.h>
 
-class CGameResourceService;
 class IVEngineServer2;
 class ISource2Server;
 class IGameEventManager2;
@@ -11,7 +14,6 @@ class IGameEventSystem;
 
 namespace interfaces
 {
-	inline CGameResourceService *pGameResourceServiceServer = nullptr;
 	inline IVEngineServer2 *pEngine = nullptr;
 	inline ISource2Server *pServer = nullptr;
 	inline IGameEventManager2 *pGameEventManager = nullptr;
@@ -31,7 +33,7 @@ namespace interfaces
 	inline void Initialize(ISmmAPI *ismm, std::vector<std::string> &missing)
 	{
 		Find(ismm, ismm->GetEngineFactory(), CVAR_INTERFACE_VERSION, "the console variable interface", g_pCVar, missing);
-		Find(ismm, ismm->GetEngineFactory(), GAMERESOURCESERVICESERVER_INTERFACE_VERSION, "the game resource service", pGameResourceServiceServer,
+		Find(ismm, ismm->GetEngineFactory(), GAMERESOURCESERVICESERVER_INTERFACE_VERSION, "the game resource service", g_pGameResourceServiceServer,
 			 missing);
 		Find(ismm, ismm->GetServerFactory(), INTERFACEVERSION_SERVERGAMECLIENTS, "the game client interface", g_pSource2GameClients, missing);
 		Find(ismm, ismm->GetServerFactory(), SOURCE2GAMEENTITIES_INTERFACE_VERSION, "the game entity interface", g_pSource2GameEntities, missing);

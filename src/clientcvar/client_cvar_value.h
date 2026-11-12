@@ -19,7 +19,7 @@
 
 #include "iclientcvarvalue.h"
 #include <khook.hpp>
-#include <networksystem/netmessage.h>
+#include <networksystem/inetworkmessages.h>
 #include <netmessages.pb.h>
 #include <array>
 #include <chrono>
@@ -30,7 +30,7 @@
 #include <utility>
 
 class IGameEventSystem;
-class INetworkMessageInternal;
+struct NetMessageInfo_t;
 class INetworkMessages;
 class IVEngineServer2;
 class CServerSideClientBase;
@@ -65,7 +65,7 @@ private:
 	uint32_t m_iQueryCvarCookieCounter = 0;
 	IVEngineServer2 *m_pEngineServer = nullptr;
 	IGameEventSystem *m_pGameEventSystem = nullptr;
-	INetworkMessageInternal *m_pGetCvarValueMessage = nullptr;
+	NetMessageInfo_t *m_pGetCvarValueMessage = nullptr;
 
 private: // IClientCvarValue
 	bool QueryCvarValue(CPlayerSlot nSlot, const char *pszCvarName, CvarValueCallback callback) override;

@@ -25,6 +25,8 @@
 *.la
 *.a
 *.lib
+!vendor/funchook/lib/*.a
+!vendor/funchook/lib/*.lib
 
 # Executables
 *.exe
@@ -36,4 +38,6 @@
 .ambuild2/
 build-*/
 AntiCheat/build-*/
+/hl2sdk-cs2/
+/metamod-source/
 *.zip

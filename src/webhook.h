@@ -86,7 +86,6 @@ private:
 	std::string ServerAddress();
 	static const char *DeliveryName(ReportData::Delivery delivery);
 
-	CSteamGameServerAPIContext steamContext;
 	ISteamHTTP *http {};
 	CCallResult<WebhookService, HTTPRequestCompleted_t> callResult;
 	std::deque<ReportData> queue;

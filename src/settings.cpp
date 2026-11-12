@@ -1,7 +1,6 @@
 #include "settings.h"
 
 #include "convar.h"
-#include "eiface.h"
 #include "utils/interfaces.h"
 
 #include <algorithm>

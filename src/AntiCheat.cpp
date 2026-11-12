@@ -402,7 +402,6 @@ bool AntiCheatPlugin::Activate(char *error, size_t maxlen, bool late)
 
 	if (g_pGameConfig)
 	{
-		AddOffsetRequirement("GameEntitySystem", "game entity system", missing);
 		AddOffsetRequirement("Teleport", "player teleport", missing);
 		AddOffsetRequirement("IsEntityPawn", "player pawn check", missing);
 		AddOffsetRequirement("IsEntityController", "player controller check", missing);
@@ -1159,9 +1158,4 @@ void AntiCheatPlugin::CleanupRuntime(bool finalCleanup)
 	{
 		activationError.clear();
 	}
-}
-
-CGameEntitySystem *GameEntitySystem()
-{
-	return interfaces::pGameResourceServiceServer ? interfaces::pGameResourceServiceServer->GetGameEntitySystem() : nullptr;
 }

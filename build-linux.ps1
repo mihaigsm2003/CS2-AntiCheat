@@ -5,7 +5,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$requiredMetaModCommit = '170058a2f0dbd58106b7c76bfe88a94672295356'
+$requiredMetaModCommit = 'ea513d8960c52d266a1c5620dc762def0dd8bce8'
 $requiredAMBuildCommit = 'd89ec91a7ac2607da07b50bb62346f9a10e9a998'
 
 if ($BuildDirectory -notmatch '^[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*$') {

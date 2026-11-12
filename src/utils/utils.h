@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "utils/interfaces.h"
+#include "game/shared/gameentitysystem.h"
 
 class CGameConfig;
 class CServerSideClient;
@@ -65,5 +66,3 @@ namespace utils
 	bool IsDetectionAnnouncementActive();
 	void ResetDetectionAnnouncement();
 } // namespace utils
-
-CGameEntitySystem *GameEntitySystem();

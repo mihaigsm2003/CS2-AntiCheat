@@ -6,7 +6,7 @@ readonly SOURCE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 METAMOD_SOURCE_INPUT="${2:-$SOURCE_DIR/metamod-source}"
 readonly SKIP_BOOTSTRAP="${3:-}"
 readonly IMAGE="registry.gitlab.steamos.cloud/steamrt/sniper/sdk@sha256:2969e5a47146a6494c01d953cd818b1d62712f42f9e54c4809d7a3aa8dc276ce"
-readonly REQUIRED_METAMOD_COMMIT="170058a2f0dbd58106b7c76bfe88a94672295356"
+readonly REQUIRED_METAMOD_COMMIT="ea513d8960c52d266a1c5620dc762def0dd8bce8"
 readonly REQUIRED_AMBUILD_COMMIT="d89ec91a7ac2607da07b50bb62346f9a10e9a998"
 
 [[ "$BUILD_DIR" =~ ^[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*$ ]] ||

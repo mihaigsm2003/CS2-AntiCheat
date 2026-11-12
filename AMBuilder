@@ -72,12 +72,19 @@ binary.compiler.cxxincludes += [
   os.path.join(builder.sourcePath, 'hl2sdk-cs2', 'public', 'entity2'),
   os.path.join(builder.sourcePath, 'hl2sdk-cs2', 'game', 'server'),
   os.path.join(builder.sourcePath, 'vendor', 'funchook', 'include'),
-  os.path.join(builder.buildPath, 'AntiCheat-protobuf',
-               '{}-{}'.format(cxx.target.platform, cxx.target.arch)),
 ]
+protobuf_include = os.path.join(
+  builder.buildPath, 'AntiCheat-protobuf',
+  '{}-{}'.format(cxx.target.platform, cxx.target.arch)
+)
+if cxx.target.platform == 'windows':
+  binary.compiler.cxxflags += ['/I' + os.path.abspath(protobuf_include)]
+else:
+  binary.compiler.cxxincludes += [protobuf_include]
 
 binary.sources += [
   os.path.join(sdk['path'], 'entity2', 'entityidentity.cpp'),
+  os.path.join(sdk['path'], 'entity2', 'entitykeyvalues.cpp'),
   os.path.join(sdk['path'], 'entity2', 'entitysystem.cpp'),
 ]
 binary.sources += collectPluginSources(cxx.target.platform)

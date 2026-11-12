@@ -54,8 +54,8 @@ class MMSPluginConfig(object):
       raise Exception('plugin-metadata.json is missing: {}.'.format(', '.join(missing)))
     if metadata['name'] != 'AntiCheat' or metadata['alias'] != 'AntiCheat':
       raise Exception('The plugin name and MetaMod alias must both be AntiCheat.')
-    if metadata['version'] != '1.0.0':
-      raise Exception('The AntiCheat version must be 1.0.0.')
+    if metadata['version'] != '1.0.1':
+      raise Exception('The AntiCheat version must be 1.0.1.')
     return metadata
 
   def findSdkPath(self, sdk_name):
@@ -200,7 +200,8 @@ class MMSPluginConfig(object):
       os.path.join(sdk['path'], 'public', 'tier1'),
     ]
     binary.sources += [
-      os.path.join(sdk['path'], 'tier1', 'convar.cpp'),
+      os.path.join(sdk['path'], 'tier0_perproject', 'keyvalues3.cpp'),
+      os.path.join(sdk['path'], 'tier0_perproject', 'convar.cpp'),
       os.path.join(sdk['path'], 'public', 'tier0', 'memoverride.cpp'),
     ]
     self.sdk_helpers.configureCxx(context, binary, sdk)

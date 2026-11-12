@@ -1,10 +1,10 @@
 #include "utils.h"
 
 #include "AntiCheat.h"
-#include "sdk/cgameresourceserviceserver.h"
 #include "sdk/serversideclient.h"
+#include "engine2/networkgameserverbase.h"
+#include "engine2/inetworkserverservice.h"
 #include "utils/gameconfig.h"
-#include "iserver.h"
 
 CGameConfig *g_pGameConfig = nullptr;
 static AntiCheatUtils s_AntiCheatUtils;

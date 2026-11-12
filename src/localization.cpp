@@ -1,7 +1,7 @@
 #include "localization.h"
 
 #include "KeyValues.h"
-#include "filesystem.h"
+#include "filesystem/ifilesystem.h"
 
 #include <cctype>
 

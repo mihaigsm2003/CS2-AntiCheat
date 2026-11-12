@@ -14,6 +14,12 @@ class MovementPlayer;
 class CCSPlayerPawnBase;
 class PlayerCommand;
 
+struct bbox_t
+{
+	Vector mins;
+	Vector maxs;
+};
+
 #ifdef DEBUG_TPM
 struct TraceHistory
 {

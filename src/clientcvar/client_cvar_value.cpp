@@ -16,10 +16,8 @@
 
 #include "client_cvar_value.h"
 #include <ISmmPlugin.h>
-#include <eiface.h>
 #include <networksystem/inetworkserializer.h>
 #include <networksystem/inetworkmessages.h>
-#include <inetchannel.h>
 #include <igameeventsystem.h>
 #include "utils.hpp"
 #include "dynlibutils/module.h"
@@ -155,7 +153,7 @@ bool ClientCvarValue::Load(IVEngineServer2 *pEngineServer, INetworkMessages *pNe
 		return false;
 	}
 
-	INetworkMessageInternal *pGetCvarValueMessage = pNetworkMessages->FindNetworkMessagePartial("CSVCMsg_GetCvarValue");
+	NetMessageInfo_t *pGetCvarValueMessage = pNetworkMessages->FindNetworkMessagePartial("CSVCMsg_GetCvarValue");
 	const int responseHandlerOffset = g_pGameConfig->GetOffset("ProcessRespondCvarValue");
 	if (!m_bProcessRespondHookConfigured)
 	{

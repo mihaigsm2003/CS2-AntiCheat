@@ -8,15 +8,15 @@
 #include "clientframe.h"
 #include "netmessages.h"
 
-#include <inetchannel.h>
+#include <networksystem/inetchannel.h>
 #include <playerslot.h>
 #include "circularbuffer.h"
 #include "utlsignalslot.h"
-#include "tier1/netadr.h"
+#include "tier0/netadr.h"
 #include <entity2/entityidentity.h>
 #include <networksystem/inetworksystem.h>
 #include <steam/steamclientpublic.h>
-#include <tier1/utlstring.h>
+#include <tier0/utlstring.h>
 
 #include <netmessages.pb.h>
 #include <network_connection.pb.h>
