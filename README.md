@@ -8,46 +8,7 @@ AntiCheat watches the aim, shots, movement, button presses, and game settings th
 
 </div>
 
-## Showcase
 
-<table>
-<tr>
-<td width="50%" align="center">
-<img src="docs/showcase/aimbot.gif" width="100%" alt="AntiCheat detecting a blatant snap-hit aimbot">
-<br><strong>AIMBOT</strong><br>
-<sub>A damaging shot follows a blatant snap onto the target.</sub>
-</td>
-<td width="50%" align="center">
-<img src="docs/showcase/aimlock.gif" width="100%" alt="AntiCheat detecting inhumanly precise target tracking">
-<br><strong>AIMLOCK</strong><br>
-<sub>The aim follows a moving enemy with machine-like precision.</sub>
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-<img src="docs/showcase/antiaim.gif" width="100%" alt="AntiCheat detecting impossible anti-aim angles">
-<br><strong>ANTIAIM</strong><br>
-<sub>The view produces impossible angles, spin, jitter, or attack-return patterns.</sub>
-</td>
-<td width="50%" align="center">
-<img src="docs/showcase/bhop.gif" width="100%" alt="AntiCheat detecting automated bunny hopping">
-<br><strong>BHOP</strong><br>
-<sub>Landings and jump inputs repeat with automated timing.</sub>
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-<img src="docs/showcase/irregular-behavior.gif" width="100%" alt="AntiCheat detecting repeated irregular airborne and no-scope results">
-<br><strong>IRREGULAR BEHAVIOR</strong><br>
-<sub>Rage-level airborne and no-scope results keep adding up.</sub>
-</td>
-<td width="50%" align="center">
-<img src="docs/showcase/silentaim.gif" width="100%" alt="AntiCheat detecting a firing angle that disagrees with visible aim">
-<br><strong>SILENTAIM</strong><br>
-<sub>The damaging firing angle does not follow the visible aim path.</sub>
-</td>
-</tr>
-</table>
 
 ## Version 1.0.1
 
