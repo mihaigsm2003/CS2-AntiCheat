@@ -36,6 +36,7 @@ if [[ "$SKIP_BOOTSTRAP" == "--skip-bootstrap" ]]; then
 else
   "$SOURCE_DIR/bootstrap.sh"
 fi
+python3 "$SOURCE_DIR/apply-sdk-patch.py" "$SOURCE_DIR/hl2sdk-cs2"
 docker version --format '{{.Server.Version}}' >/dev/null
 
 docker run --rm \

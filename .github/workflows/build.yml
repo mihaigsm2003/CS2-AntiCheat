@@ -57,12 +57,12 @@ jobs:
       - name: Package Linux server files
         run: |
           cd AntiCheat/build-linux-ci/package
-          zip -qr "$GITHUB_WORKSPACE/AntiCheat-1.0.1-linux-x64.zip" game
+          zip -qr "$GITHUB_WORKSPACE/AntiCheat-1.0.2-linux-x64.zip" game
       - name: Upload Linux package
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: AntiCheat-1.0.1-linux-x64
-          path: AntiCheat-1.0.1-linux-x64.zip
+          name: AntiCheat-1.0.2-linux-x64
+          path: AntiCheat-1.0.2-linux-x64.zip
           if-no-files-found: error
           retention-days: 30
 
@@ -98,11 +98,11 @@ jobs:
       - name: Package Windows server files
         shell: pwsh
         run: |
-          python -c "import zipfile; from pathlib import Path; root=Path('build-windows-ci/package'); files=(root/'game').rglob('*'); archive=zipfile.ZipFile('AntiCheat-1.0.1-windows-x64.zip','w',zipfile.ZIP_DEFLATED); [archive.write(path,path.relative_to(root).as_posix()) for path in files if path.is_file()]; archive.close()"
+          python -c "import zipfile; from pathlib import Path; root=Path('build-windows-ci/package'); files=(root/'game').rglob('*'); archive=zipfile.ZipFile('AntiCheat-1.0.2-windows-x64.zip','w',zipfile.ZIP_DEFLATED); [archive.write(path,path.relative_to(root).as_posix()) for path in files if path.is_file()]; archive.close()"
       - name: Upload Windows package
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: AntiCheat-1.0.1-windows-x64
-          path: AntiCheat-1.0.1-windows-x64.zip
+          name: AntiCheat-1.0.2-windows-x64
+          path: AntiCheat-1.0.2-windows-x64.zip
           if-no-files-found: error
           retention-days: 30

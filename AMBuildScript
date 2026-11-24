@@ -54,8 +54,8 @@ class MMSPluginConfig(object):
       raise Exception('plugin-metadata.json is missing: {}.'.format(', '.join(missing)))
     if metadata['name'] != 'AntiCheat' or metadata['alias'] != 'AntiCheat':
       raise Exception('The plugin name and MetaMod alias must both be AntiCheat.')
-    if metadata['version'] != '1.0.1':
-      raise Exception('The AntiCheat version must be 1.0.1.')
+    if metadata['version'] != '1.0.2':
+      raise Exception('The AntiCheat version must be 1.0.2.')
     return metadata
 
   def findSdkPath(self, sdk_name):

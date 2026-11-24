@@ -1,10 +1,10 @@
-# AntiCheat 1.0.1
+# AntiCheat 1.0.2
 
 ![AntiCheat logo](../docs/AntiCheat-logo.svg)
 
-AntiCheat 1.0.1 is maintained by GSM-RO. Existing copyright notices and licenses for inherited and third-party code remain in force.
+AntiCheat 1.0.2 is maintained by GSM-RO. Existing copyright notices and licenses for inherited and third-party code remain in force.
 
-Version 1.0.1 fixes Windows and Linux linking against the CS2 SDK's KeyValues3 and EntityKeyValues implementations and uses the SDK's GameEntitySystem accessor instead of a stale gamedata offset.
+Version 1.0.2 updates the CS2 SDK's `ISource2Server` vtable to prevent the `GameFrame` hook from calling the wrong method and crashing the server during map load. It also retains the SDK linking and GameEntitySystem accessor fixes from 1.0.1.
 
 ## Linux x86-64 build
 

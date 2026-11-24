@@ -49,6 +49,12 @@ else {
 	}
 }
 
+$python = (Get-Command python.exe -ErrorAction Stop).Source
+& $python (Join-Path $PSScriptRoot 'apply-sdk-patch.py') (Join-Path $PSScriptRoot 'hl2sdk-cs2')
+if ($LASTEXITCODE -ne 0) {
+	throw 'The CS2 SDK compatibility patch could not be applied.'
+}
+
 $image = 'registry.gitlab.steamos.cloud/steamrt/sniper/sdk@sha256:2969e5a47146a6494c01d953cd818b1d62712f42f9e54c4809d7a3aa8dc276ce'
 $docker = (Get-Command docker.exe).Source
 $sourcePath = $PSScriptRoot

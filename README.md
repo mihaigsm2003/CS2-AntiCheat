@@ -10,11 +10,11 @@ AntiCheat watches the aim, shots, movement, button presses, and game settings th
 
 
 
-## Version 1.0.1
+## Version 1.0.2
 
-This release fixes Windows and Linux builds against the CS2 SDK by linking the SDK's KeyValues3 and EntityKeyValues implementations. GameEntitySystem access now uses the SDK-provided accessor instead of a gamedata offset.
+The current source includes the `ISource2Server` vtable update from [s2sdk PR #128](https://github.com/alliedmodders/s2sdk/pull/128). CS2 added a virtual method to this interface; without it, the plugin's `GameFrame` hook can land on `ApplyGameSettings` instead and crash the server while a map loads. The tracked patch in [`patches/s2sdk-isource2server-pr128.patch`](patches/s2sdk-isource2server-pr128.patch) is applied automatically by the Linux and Windows build scripts.
 
-Windows x64 was built with MSVC 19.51, and Linux x64 was built with Clang in the pinned Steam Runtime 3 SDK image, using CS2 SDK commit `a508eb5ed5fb36f4067fa36a1c33f5fec7d73066` and MetaMod:Source commit `ea513d8960c52d266a1c5620dc762def0dd8bce8`. The plugin remains a native MetaMod:Source plugin and does not require CounterStrikeSharp; it is intended to run alongside CounterStrikeSharp 1.0.380. Runtime loading and gamedata signatures/offsets still require verification against the target CS2 server binaries.
+The plugin remains a native MetaMod:Source plugin and does not require CounterStrikeSharp; it is intended to run alongside CounterStrikeSharp 1.0.380. The Linux x64 plugin was compiled with Clang in the pinned Steam Runtime 3 SDK image. Server startup and runtime behavior should still be verified against the target CS2 server build.
 
 
 ## Quickstart
@@ -306,9 +306,30 @@ Each event contains `type`, `version`, `steamid64`, `player`, `detection`, `evid
 
 </details>
 
-Both scripts make a directly installable package under the build folder's `package/game` directory. Linux builds inside the pinned Steam Runtime 3 SDK image.
+## Building from source
 
-</details>
+The build scripts produce a directly installable package under the selected build directory's `package/game` folder. Linux builds run in the pinned Steam Runtime 3 SDK image.
+
+Prerequisites:
+
+- Git and Python 3.8 or newer.
+- The CS2 SDK checked out at `a508eb5ed5fb36f4067fa36a1c33f5fec7d73066` in `hl2sdk-cs2`.
+- MetaMod:Source checked out at `ea513d8960c52d266a1c5620dc762def0dd8bce8` in `metamod-source`.
+- Linux: Docker with the Linux container engine.
+- Windows: Visual Studio 2022 Build Tools with the C++ workload.
+
+The build scripts bootstrap the pinned AMBuild version and apply the tracked CS2 SDK compatibility patch before compiling:
+
+```powershell
+.\build-linux.ps1
+.\build-windows.ps1
+```
+
+```sh
+./build-linux.sh
+```
+
+Generated build directories and packages are ignored by Git. Keep the SDK and MetaMod:Source dependency checkouts local; the GitHub Actions workflow checks out the pinned revisions itself.
 
 ## Licensing
 

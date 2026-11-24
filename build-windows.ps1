@@ -11,6 +11,12 @@ if ($BuildDirectory -notmatch '^[A-Za-z0-9_.-]+$') {
 
 & (Join-Path $PSScriptRoot 'bootstrap.ps1')
 
+$python = (Get-Command python.exe -ErrorAction Stop).Source
+& $python (Join-Path $PSScriptRoot 'apply-sdk-patch.py') (Join-Path $PSScriptRoot 'hl2sdk-cs2')
+if ($LASTEXITCODE -ne 0) {
+	throw 'The CS2 SDK compatibility patch could not be applied.'
+}
+
 $metaModSourcePath = Join-Path $PSScriptRoot 'metamod-source'
 $metaModRevision = (& git.exe -C $metaModSourcePath rev-parse HEAD).Trim()
 if ($LASTEXITCODE -ne 0 -or $metaModRevision -ne $requiredMetaModCommit) {
@@ -38,7 +44,6 @@ foreach ($line in $environment) {
 	}
 }
 
-$python = (Get-Command python.exe).Source
 $subst = (Get-Command subst.exe).Source
 # AMBuild puts absolute paths in object filenames, so a drive alias keeps them below Windows' limit.
 $shortDrive = @('Z:', 'Y:', 'X:', 'W:', 'V:', 'U:', 'T:') |
